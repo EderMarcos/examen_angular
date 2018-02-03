@@ -1,7 +1,17 @@
+<div class="row py-3">
+  <div class="col">
+    <div class="display-4 text-center">Lista de tracks</div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col">
-    <table class="table">
-      <thead class="thead-dark">
+    <button class="btn btn-success mb-3 float-right" routerLink="/dashboard/tracks/new">
+      Agregar track
+      <i class="fas fa-plus-circle"></i>
+    </button>
+    <table class="table table-bordered text-center">
+      <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
@@ -11,6 +21,7 @@
           <th scope="col">HB</th>
           <th scope="col">KPI1</th>
           <th scope="col">KPI2</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +34,36 @@
           <td>Cella </td>
           <td>Secula </td>
           <td>@mdo</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-outline-primary">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button type="button" class="btn btn-outline-danger">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">1</th>
+          <td>Gandavum </td>
+          <td>Cacula </td>
+          <td>Genetrix </td>
+          <td>Virundum </td>
+          <td>Cella </td>
+          <td>Secula </td>
+          <td>@mdo</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-outline-primary">
+                <i class="fas fa-edit"></i>
+              </button>
+              <button type="button" class="btn btn-outline-danger">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>

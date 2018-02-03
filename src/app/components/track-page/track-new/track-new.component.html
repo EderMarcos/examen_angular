@@ -1,5 +1,72 @@
-<div class="row">
-  <div class="col">
+<div class="container">
+  <div class="row py-3">
+    <div class="col">
+      <div class="display-4 text-center">Creacion de un track</div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col">
+      <form>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="inputName">Name:</label>
+              <input type="text" class="form-control" id="inputName" placeholder="Name">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="inputDate">Date:</label>
+              <input type="date" class="form-control" id="inputDate" placeholder="01/01/2018">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="inputCurrent">Current:</label>
+              <input type="number" class="form-control" id="inputCurrent" placeholder="15.1">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="inputStandard">Standard:</label>
+              <input type="number" class="form-control" id="inputStandard" placeholder="15">
+            </div>
+          </div>
+          <div class="col">
+            <label for="inputHb">HB:</label>
+            <select class="custom-select" id="inputHb">
+              <option selected>Elige una opcion</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="inputKPI1">KPI1:</label>
+              <input type="number" class="form-control" id="inputKPI1" placeholder="1.8">
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label for="inputKPI2">KPI2:</label>
+              <input type="number" class="form-control" id="inputKPI2" placeholder="0.01">
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-primary float-left" routerLink="/dashboard/tracks">
+          <i class="fas fa-arrow-left"></i>
+          Regresar
+        </button>
+        <button class="btn btn-success float-right">
+          Guardar
+          <i class="fas fa-save"></i>
+        </button>
+      </form>
+    </div>
   </div>
 </div>
