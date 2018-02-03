@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
 
 // Services
+import { TrackService } from './services/track.service';
 
 // Components
 import { AppComponent } from './app.component';
@@ -31,9 +32,10 @@ import { TracksComponent } from './components/track-page/tracks/tracks.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ TrackService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

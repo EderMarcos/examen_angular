@@ -25,41 +25,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Gandavum </td>
-          <td>Cacula </td>
-          <td>Genetrix </td>
-          <td>Virundum </td>
-          <td>Cella </td>
-          <td>Secula </td>
-          <td>@mdo</td>
+        <tr *ngFor="let i of trackList; let idx = index">
+          <th>{{ idx }}</th>
+          <td>{{ i.name }}</td>
+          <td>{{ i.date | date: 'short'}}</td>
+          <td>{{ i.current }}</td>
+          <td>{{ i.standard }}</td>
+          <td>{{ i.hb }}</td>
+          <td>{{ i.kpi1 }}</td>
+          <td>{{ i.kpi2 }}</td>
           <td>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-primary">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-outline-primary" routerLink="/dashboard/tracks/{{ idx }}/update">
                 <i class="fas fa-edit"></i>
               </button>
-              <button type="button" class="btn btn-outline-danger">
-                <i class="fas fa-trash"></i>
-              </button>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">1</th>
-          <td>Gandavum </td>
-          <td>Cacula </td>
-          <td>Genetrix </td>
-          <td>Virundum </td>
-          <td>Cella </td>
-          <td>Secula </td>
-          <td>@mdo</td>
-          <td>
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-outline-primary">
-                <i class="fas fa-edit"></i>
-              </button>
-              <button type="button" class="btn btn-outline-danger">
+              <button type="button" class="btn btn-outline-danger" (click)="removeTrack(idx)">
                 <i class="fas fa-trash"></i>
               </button>
             </div>
