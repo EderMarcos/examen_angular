@@ -1,0 +1,10 @@
+.img-fluid-custom {
+  object-fit: inherit;
+  filter: blur(5px);
+  transform: scale(2);
+  min-height: 100vh;
+}
+
+.o-hidden {
+  overflow: hidden;
+}

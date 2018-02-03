@@ -1,0 +1,40 @@
+.ul-navbar {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  li {
+    padding: 8px 20px;
+    margin-right: 15px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    &.active {
+      color: #61B296;
+      &:before {
+        width: 100%;
+      }
+    }
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 0;
+      bottom: 0;
+      left: 0;
+      background: #61B296;
+      transition: all 0.5s;
+    }
+    &:hover:before {
+      width: 100%;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 0.7em;
+      text-space: 1px;
+    }
+  }
+}
+
+
+
