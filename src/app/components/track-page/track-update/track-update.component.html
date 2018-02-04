@@ -7,7 +7,7 @@
 
   <div class="row mb-4">
     <div class="col">
-      <table class="table table-bordered table-sm text-center">
+      <table class="table table-bordered table-dark table-sm text-center">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -22,7 +22,7 @@
         <tbody>
           <tr>
             <td>{{ trackObject.name }}</td>
-            <td>{{ trackObject.date }}</td>
+            <td>{{ trackObject.date | date: 'short'}}</td>
             <td>{{ trackObject.current }}</td>
             <td>{{ trackObject.standard }}</td>
             <td>{{ trackObject.hb }}</td>

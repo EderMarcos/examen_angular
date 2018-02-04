@@ -7,10 +7,10 @@
 <div class="row">
   <div class="col">
     <button class="btn btn-success mb-3 float-right" routerLink="/dashboard/tracks/new">
-      Agregar track
+      Nuevo registro
       <i class="fas fa-plus-circle"></i>
     </button>
-    <table class="table table-bordered text-center">
+    <table class="table table-bordered text-center animated fadeIn">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -47,5 +47,17 @@
         </tr>
       </tbody>
     </table>
+
+    <div class="alert alert-info animated fadeIn" role="alert" *ngIf="(objTracks | keysFirebase).length < 1 && !loading">
+      <h4 class="alert-heading">¡Bien hecho!</h4>
+      <p>Todos los registros de tracks que has creado, apareceran aquí.</p>
+      <hr>
+      <p class="mb-0">Parece que has vaciado todos los registros de la base de datos.</p>
+    </div>
+
+    <div class="alert alert-success" role="alert" *ngIf="loading">
+      <i class="fas fa-sync fa-spin mr-3"></i>
+      Cargando, por favor espere!
+    </div>
   </div>
 </div>

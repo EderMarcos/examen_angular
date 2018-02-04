@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'keysFirebase'
+  name: 'keysFirebase',
+  pure: false
 })
 export class KeysFirebasePipe implements PipeTransform {
 

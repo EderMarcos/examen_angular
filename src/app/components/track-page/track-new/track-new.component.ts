@@ -40,15 +40,14 @@ export class TrackNewComponent implements OnInit {
   ngOnInit() { }
 
   public addTrack(): void {
-    this.trackService.setDataTrack(this.trackObject);
-    this.router.navigateByUrl('/dashboard/tracks');
-  }
-
-  public save(): void {
     console.log(this.trackObject);
     this.trackService.newTrack(this.trackObject)
       .subscribe(res => {
-        console.log(res);
+        if (res) {
+          this.router.navigateByUrl('/dashboard/tracks');
+        } else {
+          console.error('Hubo un error al crear un nuevo registro');
+        }
       },
       error => console.log(error));
   }

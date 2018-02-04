@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
 import { TrackInterface } from '../interfaces/track';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
@@ -7,7 +6,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class TrackService {
 
-  private dataTrack:  Observable<TrackInterface>;
   private apiFirebase = 'https://mtech-34a4b.firebaseio.com/tracks';
   private headers: HttpHeaders;
 
@@ -17,17 +15,6 @@ export class TrackService {
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-  }
-
-  public setDataTrack(track: TrackInterface): void {
-    this.dataTrack = new Observable<TrackInterface>(observer => {
-      observer.next(track);
-      observer.complete();
-    });
-  }
-
-  public getDataTrack(): Observable<TrackInterface> {
-    return this.dataTrack;
   }
 
   public newTrack(data: TrackInterface) {
@@ -57,6 +44,7 @@ export class TrackService {
   }
 
   public deleteTrack(key$: string) {
+    console.log('delete');
     return this.http
       .delete(`${ this.apiFirebase }/${ key$ }.json`, { headers: this.headers })
       .map(res => res);
