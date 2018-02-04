@@ -1,0 +1,26 @@
+<div class="row mb-5">
+  <div class="col">
+    <div style="display: block;">
+      <canvas baseChart width="1200"  height="300" *ngIf="onReady"
+              [datasets]="lineChartData"
+              [labels]="lineChartLabels"
+              [options]="lineChartOptions"
+              [colors]="lineChartColors"
+              [legend]="lineChartLegend"
+              [chartType]="lineChartType"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col" style="margin-bottom: 10px">
+    <table class="table table-bordered text-center animated fadeIn">
+      <tr>
+        <th *ngFor="let label of lineChartLabels">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of lineChartData">
+        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { ChartsModule } from 'ng2-charts';
 
 // Routes
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { TrackUpdateComponent } from './components/track-page/track-update/track
 import { TracksComponent } from './components/track-page/tracks/tracks.component';
 import { HttpClientModule } from '@angular/common/http';
 import { KeysFirebasePipe } from './pipes/keys-firebase.pipe';
+import { LineChartComponent } from './components/utils/line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
@@ -30,14 +32,16 @@ import { KeysFirebasePipe } from './pipes/keys-firebase.pipe';
     TrackNewComponent,
     TrackUpdateComponent,
     TracksComponent,
-    KeysFirebasePipe
+    KeysFirebasePipe,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [ TrackService ],
   bootstrap: [ AppComponent ]
