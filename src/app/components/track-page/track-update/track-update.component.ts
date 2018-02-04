@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {TrackInterface} from '../../../interfaces/track';
+import {Router} from '@angular/router';
+import {TrackService} from '../../../services/track.service';
 
 @Component({
   selector: 'app-track-update',
@@ -7,9 +11,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrackUpdateComponent implements OnInit {
 
-  constructor() { }
+  public form: FormGroup;
+  public trackObject: TrackInterface = {
+    name: null,
+    date: null,
+    current: null,
+    standard: null,
+    hb: null,
+    kpi1: null,
+    kpi2: null,
+  };
 
-  ngOnInit() {
+  constructor(
+    private trackService: TrackService,
+    private router: Router
+  ) {
+    this.form = new FormGroup({
+      'name': new FormControl(null, [Validators.required, Validators.minLength(2)]),
+      'date': new FormControl(null, [Validators.required]),
+      'current': new FormControl(null, [Validators.required]),
+      'standard': new FormControl(null, [Validators.required]),
+      'hb': new FormControl(null, [Validators.required]),
+      'kpi1': new FormControl(null, [Validators.required]),
+      'kpi2': new FormControl(null, [Validators.required])
+    });
+    this.form.setValue(this.trackObject);
   }
 
+  ngOnInit() { }
+
+  public updateTrack(): void {
+    console.log(this.trackObject);
+  }
 }

@@ -17,6 +17,7 @@ import { AnalyticsPageComponent } from './components/analytics-page/analytics-pa
 import { TrackNewComponent } from './components/track-page/track-new/track-new.component';
 import { TrackUpdateComponent } from './components/track-page/track-update/track-update.component';
 import { TracksComponent } from './components/track-page/tracks/tracks.component';
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TracksComponent } from './components/track-page/tracks/tracks.component
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule
   ],
   providers: [ TrackService ],
   bootstrap: [ AppComponent ]

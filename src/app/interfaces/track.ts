@@ -6,4 +6,5 @@ export interface TrackInterface {
   hb: number;
   kpi1: number;
   kpi2: number;
+  key$?: string;
 }

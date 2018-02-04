@@ -38,18 +38,34 @@
 
   <div class="row">
     <div class="col">
-      <form>
+      <form [formGroup]="form" (ngSubmit)="updateTrack()" novalidate>
         <div class="row">
           <div class="col">
             <div class="form-group">
               <label for="inputName">Name:</label>
-              <input type="text" class="form-control" id="inputName" placeholder="Name">
+              <input type="text" class="form-control"
+                     [ngClass]="{
+                     'is-valid': form.controls['name'].valid && form.controls['name'].touched,
+                     'is-invalid': form.controls['name'].invalid && form.controls['name'].touched
+                     }"
+                     id="inputName" placeholder="Name" formControlName="name">
+              <small *ngIf="form.controls['name'].errors?.required && form.controls['name'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="inputDate">Date:</label>
-              <input type="date" class="form-control" id="inputDate" placeholder="01/01/2018">
+              <input type="date" class="form-control"
+                     [ngClass]="{
+                     'is-valid': form.controls['date'].valid && form.controls['date'].touched,
+                     'is-invalid': form.controls['date'].invalid && form.controls['date'].touched
+                     }"
+                     id="inputDate" placeholder="01/01/2018" formControlName="date">
+              <small *ngIf="form.controls['date'].errors?.required && form.controls['date'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
             </div>
           </div>
         </div>
@@ -57,35 +73,75 @@
           <div class="col">
             <div class="form-group">
               <label for="inputCurrent">Current:</label>
-              <input type="number" class="form-control" id="inputCurrent" placeholder="15.1">
+              <input type="number" class="form-control"
+                     [ngClass]="{
+                     'is-valid': form.controls['current'].valid && form.controls['current'].touched,
+                     'is-invalid': form.controls['current'].invalid && form.controls['current'].touched
+                     }"
+                     id="inputCurrent" placeholder="15.1" formControlName="current">
+              <small *ngIf="form.controls['current'].errors?.required && form.controls['current'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="inputStandard">Standard:</label>
-              <input type="number" class="form-control" id="inputStandard" placeholder="15">
+              <input type="number" class="form-control"
+                     [ngClass]="{
+                     'is-valid': form.controls['standard'].valid && form.controls['standard'].touched,
+                     'is-invalid': form.controls['standard'].invalid && form.controls['standard'].touched
+                     }"
+                     id="inputStandard" placeholder="15" formControlName="standard">
+              <small *ngIf="form.controls['standard'].errors?.required && form.controls['standard'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
             </div>
           </div>
           <div class="col">
             <label for="inputHb">HB:</label>
-            <select class="custom-select" id="inputHb">
-              <option selected>Elige una opcion</option>
+            <select class="custom-select"
+                    [ngClass]="{
+                     'is-valid': form.controls['hb'].valid && form.controls['hb'].touched,
+                     'is-invalid': form.controls['hb'].invalid && form.controls['hb'].touched
+                     }"
+                    id="inputHb" formControlName="hb">
+              <option value="null">Elige una opcion</option>
               <option value="1">1</option>
               <option value="2">2</option>
             </select>
+            <small *ngIf="form.controls['hb'].errors?.required && form.controls['hb'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
           </div>
         </div>
         <div class="row">
           <div class="col">
             <div class="form-group">
               <label for="inputKPI1">KPI1:</label>
-              <input type="number" class="form-control" id="inputKPI1" placeholder="1.8">
+              <input type="number" class="form-control"
+                     [ngClass]="{
+                     'is-valid': form.controls['kpi1'].valid && form.controls['kpi1'].touched,
+                     'is-invalid': form.controls['kpi1'].invalid && form.controls['kpi1'].touched
+                     }"
+                     id="inputKPI1" placeholder="1.8" formControlName="kpi1">
+              <small *ngIf="form.controls['kpi1'].errors?.required && form.controls['kpi1'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
             </div>
           </div>
           <div class="col">
             <div class="form-group">
               <label for="inputKPI2">KPI2:</label>
-              <input type="number" class="form-control" id="inputKPI2" placeholder="0.01">
+              <input type="number" class="form-control"
+                     [ngClass]="{
+                     'is-valid': form.controls['kpi2'].valid && form.controls['kpi2'].touched,
+                     'is-invalid': form.controls['kpi2'].invalid && form.controls['kpi2'].touched
+                     }"
+                     id="inputKPI2" placeholder="0.01" formControlName="kpi2">
+              <small *ngIf="form.controls['kpi2'].errors?.required && form.controls['kpi2'].touched" class="invalid-feedback">
+              * El campo es obligatorio
+            </small>
             </div>
           </div>
         </div>
@@ -93,7 +149,7 @@
           <i class="fas fa-arrow-left"></i>
           Regresar
         </button>
-        <button class="btn btn-success float-right">
+        <button class="btn btn-success float-right" [disabled]="form.invalid">
           Guardar
           <i class="fas fa-save"></i>
         </button>

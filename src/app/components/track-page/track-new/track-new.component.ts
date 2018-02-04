@@ -22,8 +22,10 @@ export class TrackNewComponent implements OnInit {
     kpi2: null,
   };
 
-  constructor(private trackService: TrackService,
-              private router: Router) {
+  constructor(
+    private trackService: TrackService,
+    private router: Router
+  ) {
     this.form = new FormGroup({
       'name': new FormControl(null, [Validators.required, Validators.minLength(2)]),
       'date': new FormControl(null, [Validators.required]),
@@ -35,8 +37,7 @@ export class TrackNewComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public addTrack(): void {
     this.trackService.setDataTrack(this.trackObject);
@@ -44,9 +45,7 @@ export class TrackNewComponent implements OnInit {
   }
 
   public save(): void {
+    console.log(this.trackObject);
     console.log(this.form);
-    console.log(this.form.value);
-    console.log(this.form.controls['name'].errors);
   }
-
 }
