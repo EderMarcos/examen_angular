@@ -17,7 +17,8 @@ import { AnalyticsPageComponent } from './components/analytics-page/analytics-pa
 import { TrackNewComponent } from './components/track-page/track-new/track-new.component';
 import { TrackUpdateComponent } from './components/track-page/track-update/track-update.component';
 import { TracksComponent } from './components/track-page/tracks/tracks.component';
-import {HttpModule} from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { KeysFirebasePipe } from './pipes/keys-firebase.pipe';
 
 @NgModule({
   declarations: [
@@ -28,14 +29,15 @@ import {HttpModule} from '@angular/http';
     AnalyticsPageComponent,
     TrackNewComponent,
     TrackUpdateComponent,
-    TracksComponent
+    TracksComponent,
+    KeysFirebasePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpClientModule
   ],
   providers: [ TrackService ],
   bootstrap: [ AppComponent ]

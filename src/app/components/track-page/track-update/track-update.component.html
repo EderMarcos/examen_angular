@@ -7,10 +7,9 @@
 
   <div class="row mb-4">
     <div class="col">
-      <table class="table table-bordered table-sm">
+      <table class="table table-bordered table-sm text-center">
         <thead>
           <tr>
-            <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Date</th>
             <th scope="col">Current</th>
@@ -22,14 +21,13 @@
         </thead>
         <tbody>
           <tr>
-            <th scope="row">1</th>
-            <td>Gandavum </td>
-            <td>Cacula </td>
-            <td>Genetrix </td>
-            <td>Virundum </td>
-            <td>Cella </td>
-            <td>Secula </td>
-            <td>@mdo</td>
+            <td>{{ trackObject.name }}</td>
+            <td>{{ trackObject.date }}</td>
+            <td>{{ trackObject.current }}</td>
+            <td>{{ trackObject.standard }}</td>
+            <td>{{ trackObject.hb }}</td>
+            <td>{{ trackObject.kpi1 }}</td>
+            <td>{{ trackObject.kpi2 }}</td>
           </tr>
         </tbody>
       </table>
@@ -48,7 +46,8 @@
                      'is-valid': form.controls['name'].valid && form.controls['name'].touched,
                      'is-invalid': form.controls['name'].invalid && form.controls['name'].touched
                      }"
-                     id="inputName" placeholder="Name" formControlName="name">
+                     id="inputName" placeholder="Name" formControlName="name"
+                     [(ngModel)]="trackObject.name">
               <small *ngIf="form.controls['name'].errors?.required && form.controls['name'].touched" class="invalid-feedback">
               * El campo es obligatorio
             </small>
@@ -62,7 +61,8 @@
                      'is-valid': form.controls['date'].valid && form.controls['date'].touched,
                      'is-invalid': form.controls['date'].invalid && form.controls['date'].touched
                      }"
-                     id="inputDate" placeholder="01/01/2018" formControlName="date">
+                     id="inputDate" placeholder="01/01/2018" formControlName="date"
+                     [(ngModel)]="trackObject.date">
               <small *ngIf="form.controls['date'].errors?.required && form.controls['date'].touched" class="invalid-feedback">
               * El campo es obligatorio
             </small>
@@ -78,7 +78,8 @@
                      'is-valid': form.controls['current'].valid && form.controls['current'].touched,
                      'is-invalid': form.controls['current'].invalid && form.controls['current'].touched
                      }"
-                     id="inputCurrent" placeholder="15.1" formControlName="current">
+                     id="inputCurrent" placeholder="15.1" formControlName="current"
+                     [(ngModel)]="trackObject.current">
               <small *ngIf="form.controls['current'].errors?.required && form.controls['current'].touched" class="invalid-feedback">
               * El campo es obligatorio
             </small>
@@ -92,7 +93,8 @@
                      'is-valid': form.controls['standard'].valid && form.controls['standard'].touched,
                      'is-invalid': form.controls['standard'].invalid && form.controls['standard'].touched
                      }"
-                     id="inputStandard" placeholder="15" formControlName="standard">
+                     id="inputStandard" placeholder="15" formControlName="standard"
+                     [(ngModel)]="trackObject.standard">
               <small *ngIf="form.controls['standard'].errors?.required && form.controls['standard'].touched" class="invalid-feedback">
               * El campo es obligatorio
             </small>
@@ -105,7 +107,8 @@
                      'is-valid': form.controls['hb'].valid && form.controls['hb'].touched,
                      'is-invalid': form.controls['hb'].invalid && form.controls['hb'].touched
                      }"
-                    id="inputHb" formControlName="hb">
+                    id="inputHb" formControlName="hb"
+                    [(ngModel)]="trackObject.hb">
               <option value="null">Elige una opcion</option>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -124,7 +127,8 @@
                      'is-valid': form.controls['kpi1'].valid && form.controls['kpi1'].touched,
                      'is-invalid': form.controls['kpi1'].invalid && form.controls['kpi1'].touched
                      }"
-                     id="inputKPI1" placeholder="1.8" formControlName="kpi1">
+                     id="inputKPI1" placeholder="1.8" formControlName="kpi1"
+                     [(ngModel)]="trackObject.kpi1">
               <small *ngIf="form.controls['kpi1'].errors?.required && form.controls['kpi1'].touched" class="invalid-feedback">
               * El campo es obligatorio
             </small>
@@ -138,7 +142,8 @@
                      'is-valid': form.controls['kpi2'].valid && form.controls['kpi2'].touched,
                      'is-invalid': form.controls['kpi2'].invalid && form.controls['kpi2'].touched
                      }"
-                     id="inputKPI2" placeholder="0.01" formControlName="kpi2">
+                     id="inputKPI2" placeholder="0.01" formControlName="kpi2"
+                     [(ngModel)]="trackObject.kpi2">
               <small *ngIf="form.controls['kpi2'].errors?.required && form.controls['kpi2'].touched" class="invalid-feedback">
               * El campo es obligatorio
             </small>

@@ -25,21 +25,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let i of trackList; let idx = index">
-          <th>{{ idx }}</th>
-          <td>{{ i.name }}</td>
-          <td>{{ i.date | date: 'short'}}</td>
-          <td>{{ i.current }}</td>
-          <td>{{ i.standard }}</td>
-          <td>{{ i.hb }}</td>
-          <td>{{ i.kpi1 }}</td>
-          <td>{{ i.kpi2 }}</td>
+        <tr *ngFor="let i of objTracks | keysFirebase; let idx = index">
+          <th>{{ idx + 1 }}</th>
+          <td>{{ objTracks[i].name }}</td>
+          <td>{{ objTracks[i].date | date: 'short'}}</td>
+          <td>{{ objTracks[i].current }}</td>
+          <td>{{ objTracks[i].standard }}</td>
+          <td>{{ objTracks[i].hb }}</td>
+          <td>{{ objTracks[i].kpi1 }}</td>
+          <td>{{ objTracks[i].kpi2 }}</td>
           <td>
             <div class="btn-group" role="group">
-              <button type="button" class="btn btn-outline-primary" routerLink="/dashboard/tracks/{{ idx }}/update">
+              <button type="button" class="btn btn-outline-primary" routerLink="/dashboard/tracks/{{ i }}/update">
                 <i class="fas fa-edit"></i>
               </button>
-              <button type="button" class="btn btn-outline-danger" (click)="removeTrack(idx)">
+              <button type="button" class="btn btn-outline-danger" (click)="removeTrack(i)">
                 <i class="fas fa-trash"></i>
               </button>
             </div>

@@ -46,6 +46,10 @@ export class TrackNewComponent implements OnInit {
 
   public save(): void {
     console.log(this.trackObject);
-    console.log(this.form);
+    this.trackService.newTrack(this.trackObject)
+      .subscribe(res => {
+        console.log(res);
+      },
+      error => console.log(error));
   }
 }

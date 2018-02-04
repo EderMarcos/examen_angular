@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {TrackInterface} from '../../../interfaces/track';
-import {Router} from '@angular/router';
-import {TrackService} from '../../../services/track.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TrackInterface } from '../../../interfaces/track';
+import { TrackService } from '../../../services/track.service';
 
 @Component({
   selector: 'app-track-update',
@@ -12,7 +12,7 @@ import {TrackService} from '../../../services/track.service';
 export class TrackUpdateComponent implements OnInit {
 
   public form: FormGroup;
-  public trackObject: TrackInterface = {
+  public trackObject: any = {
     name: null,
     date: null,
     current: null,
@@ -21,10 +21,12 @@ export class TrackUpdateComponent implements OnInit {
     kpi1: null,
     kpi2: null,
   };
+  private id: string;
 
   constructor(
     private trackService: TrackService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {
     this.form = new FormGroup({
       'name': new FormControl(null, [Validators.required, Validators.minLength(2)]),
@@ -35,12 +37,22 @@ export class TrackUpdateComponent implements OnInit {
       'kpi1': new FormControl(null, [Validators.required]),
       'kpi2': new FormControl(null, [Validators.required])
     });
-    this.form.setValue(this.trackObject);
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.activatedRoute.params.subscribe(res => this.id = res['id']);
+    this.trackService.getTrack(this.id).subscribe(
+      res => {
+        this.trackObject = res;
+        this.form.setValue(this.trackObject);
+      },
+      error => console.log(error)
+    );
+  }
 
   public updateTrack(): void {
-    console.log(this.trackObject);
+    this.trackService.updateTrack(this.trackObject, this.id).subscribe(
+      res => this.router.navigateByUrl('/dashboard/tracks'),
+      error => console.log(error));
   }
 }
