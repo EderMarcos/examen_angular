@@ -8,7 +8,7 @@ import {TrackService} from '../../../services/track.service';
 })
 export class LineChartComponent implements OnInit {
 
-  public lineChartLabels: Array<any> = ['Current', 'Standard', 'HB', 'Kpi1', 'Kpi2'];
+  public lineChartLabels: Array<any> = [];
   public lineChartOptions: any = {
     responsive: true
   };
@@ -19,16 +19,19 @@ export class LineChartComponent implements OnInit {
   public onReady = false;
 
   constructor(private trackService: TrackService) {
+    const currentList: Array<any> = [];
+    const standardList: Array<any> = [];
     this.trackService.getTracks().subscribe(res => {
       for (const i in res) {
-        this.lineChartData.push({ data: [
-          res[i].current,
-          res[i].standard,
-          res[i].hb,
-          res[i].kpi1,
-          res[i].kpi2,
-        ], label: res[i].name });
+        currentList.push(res[i].current);
+        standardList.push(res[i].standard);
+        this.lineChartLabels.push(res[i].name);
       }
+
+      this.lineChartData = [
+        {data: currentList, label: 'Current'},
+        {data: standardList, label: 'Standard'},
+      ];
       this.onReady = true;
     });
   }
